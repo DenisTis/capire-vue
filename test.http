@@ -1,0 +1,57 @@
+###
+#
+# Test some open API
+POST https://api.restful-api.dev/objects
+Content-Type: application/json;IEEE754Compatible=true
+
+{"name":"Apple MacBook Pro 16","data":{"year":2019,"price":1849.99,"CPU model":"Intel Core i9","Hard disk size":"1 TB"}}
+
+
+# Add new environment
+POST http://localhost:4004/odata/v4/environments/Environments
+Content-Type: application/json;IEEE754Compatible=true
+
+{"name": "Integration", "description": "test new environment"}
+
+# Get environments
+GET http://localhost:4004/odata/v4/environments/Environments
+
+# Get US environment
+GET http://localhost:4004/odata/v4/environments/Environments(a43675ee-79af-44eb-826d-9c9555291c4a)
+
+# Expand
+GET http://localhost:4004/odata/v4/environments/EnvironmentVariables?$expand=Environments
+
+
+
+
+
+# GET http://localhost:4004/odata/v4/catalog/Books?
+#   # &$select=title,stock
+#   # &$expand=currency
+#   # &sap-language=de
+
+# ###
+# #
+# # Get Author wit ID 101
+# #
+# GET http://localhost:4004/odata/v4/catalog/Authors(101)
+
+# ###
+# #
+# # Update Author with ID 101
+# #
+# POST http://localhost:4004/odata/v4/catalog/Authors
+# Content-Type: application/json
+
+# {"ID": 101, "name": "Some Author"}
+
+
+# ###
+# #
+# # Order a Book
+# #
+# POST http://localhost:4004/odata/v4/catalog/Orders
+# Content-Type: application/json;IEEE754Compatible=true
+
+# {"book_ID": 201, "amount": 5}
